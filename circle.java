@@ -13,23 +13,23 @@ public class circle extends JPanel{
 	public void paint(Graphics g){
 		g=i;
 	}
-	void respawn(){
+	void respawn(int side){
 		x=500;
 		y=250;
 		isColliding=0;
 		isCollidingx = 0;
 		isCollidingy = 0;
-		if(Math.round(Math.random()+1)<0){
-			xAccel=(int)Math.round(Math.random()*2+1)*-1;
+		if(side==1){
+			xAccel=(int)Math.round(Math.random()*7.5+5)*-1;
 		}
 		else{	
-			xAccel=(int)Math.round(Math.random()*2+1);
+			xAccel=(int)Math.round(Math.random()*7.5+5);
 		}
 		if(Math.round(Math.random()+1)<0){
-			yAccel=(int)Math.round(Math.random()*2+1)*-1;
+			yAccel=(int)Math.round(Math.random()*7.5+5)*-1;
 		}
 		else{
-			yAccel=(int)Math.round(Math.random()*2+1);
+			yAccel=(int)Math.round(Math.random()*7.5+5);
 		}
 	}
 	public void initialize(Graphics g){
@@ -37,6 +37,7 @@ public class circle extends JPanel{
 		i=g;
 		x=x+xAccel;
 		y=y+yAccel;
+		//System.out.println(xAccel + " " + yAccel);
 				if((y<mainCode.player1.x+75)&&(y+10>mainCode.player1.x)&&(x<25)){
 					if(isColliding==0){
 						xAccel = (Math.abs(xAccel)+1)*1;
@@ -66,11 +67,11 @@ public class circle extends JPanel{
 				}
 			if(x>990){
 				mainCode.addPoints(1,1);
-				respawn();
+				respawn(1);
 			}
 			else if(x<1){
 				mainCode.addPoints(2,1);
-				respawn();
+				respawn(2);
 			}
 			else{
 				isCollidingx=0;

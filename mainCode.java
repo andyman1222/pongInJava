@@ -5,8 +5,8 @@ import java.awt.event.*;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
 public class mainCode extends JPanel{
-	public static square player1=new square(0);
-	public static square player2=new square(975);
+	public static square player1=new square(0,"player1");
+	public static square player2=new square(975,"player2");
 	static circle circle1=new circle();
 	public void paint(Graphics g){
 		tick(g);
@@ -26,11 +26,10 @@ public class mainCode extends JPanel{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		KeyPress keys=new KeyPress();
 		frame.addKeyListener(keys);
-		circle1.respawn();
-
+		circle1.respawn((int)Math.round((Math.random()*2)+1));
 	}
 	public static void tick(Graphics g){
-		try{Thread.sleep(10);}
+		try{Thread.sleep(0,1);}
 		catch(Exception e){}
 		g.setColor(Color.black);
 		g.fillRect(0,0,1000,500);

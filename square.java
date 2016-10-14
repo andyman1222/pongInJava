@@ -12,9 +12,11 @@ public class square{
 	public String pointsString = "0";
 	public int acceleration;
 	public boolean isActive = false;
+	public String name;
 
-	public square(int y){
+	public square(int y, String name){
 		this.y=y;
+		this.name = name;
 	}
 	public void initialize(Graphics g){
 		if(isActive){
@@ -23,6 +25,10 @@ public class square{
 		else{
 			moveCPU();
 		}
+		try{
+			Thread.sleep(10);
+		}
+		catch(Exception e){}
 		g.setColor(Color.white);
 		g.fillRect(y,x,25,75);
 		pointsString = ""+points;
